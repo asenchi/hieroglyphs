@@ -4,6 +4,7 @@ import (
 	"errors"
 	"regexp"
 	"strconv"
+	"time"
 )
 
 var SeverityMap = map[int]string{
@@ -47,12 +48,14 @@ var FacilityMap = map[int]string{
 var regexEvent = regexp.MustCompile(
 	`^<(\d+)>(\d+) ([^ ]+) ([^ ]+) ([^ ]+) ([^ ]+) - - (.*)$`)
 
+const timeFormat = "2006-01-02T15:04:05-07:00"
+
 type LogEvent struct {
 	Priority  int
 	Version   int
 	Severity  int
 	Facility  int
-	Timestamp string // Eventually do datetime here.
+	Timestamp time.Time
 	Hostname  string
 	Program   string
 	Pid       string // Eventually do int here (need to handle the '-' case
@@ -84,9 +87,13 @@ func ParseEvent(buf []byte) (*LogEvent, error) {
 		}
 	}
 
-	var timestamp string
+	var timestamp time.Time
 	if len(match[3]) != 0 {
-		timestamp = string(match[3])
+		loc, _ := time.LoadLocation("America/Los_Angeles")
+		timestamp, err = time.ParseInLocation(timeFormat, string(match[3]), loc)
+		if err != nil {
+			return nil, errors.New("Failed to convert timestamp to time.Time")
+		}
 	}
 
 	var hostname string
