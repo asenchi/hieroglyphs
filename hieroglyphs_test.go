@@ -37,7 +37,7 @@ func TestEventParsing(t *testing.T) {
 			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
-		if evt.Timestamp != tt.Event.Timestamp {
+		if !evt.Timestamp.Equal(tt.Event.Timestamp) {
 			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event.Timestamp, evt.Timestamp)
 		}
 
