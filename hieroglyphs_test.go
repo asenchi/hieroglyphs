@@ -22,43 +22,43 @@ func TestEventParsing(t *testing.T) {
 		}
 
 		if evt.Priority != tt.Event.Priority {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Version != tt.Event.Version {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Severity != tt.Event.Severity {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Facility != tt.Event.Facility {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Timestamp != tt.Event.Timestamp {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event.Timestamp, evt.Timestamp)
 		}
 
 		if evt.Hostname != tt.Event.Hostname {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Program != tt.Event.Program {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Pid != tt.Event.Pid {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if evt.Message != tt.Event.Message {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 
 		if string(evt.Original) != tt.RawMessage {
-			t.Fatalf("Expected: %v\nReceived: %v", tt.Event, evt)
+			t.Fatalf("\nExpected: %v\nReceived: %v", tt.Event, evt)
 		}
 	}
 }
