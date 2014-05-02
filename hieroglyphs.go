@@ -58,7 +58,7 @@ type LogEvent struct {
 	Timestamp time.Time
 	Hostname  string
 	Program   string
-	Pid       string // Eventually do int here (need to handle the '-' case
+	Pid       string
 	Message   string
 	Original  []byte
 }
